@@ -1,6 +1,6 @@
 <?php
 include "database.php";
-function isLoggenIn(){
+function isLoggedIn(){
   if(!isset($_SESSION["loggedIn"])){
     header('location: login.php');
   }
