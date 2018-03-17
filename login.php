@@ -30,7 +30,7 @@
               </div>
               <input class ="btn btn-success" type="submit" name="submit" value="submit" style="float:left;">
           </form>
-          <form action="/create_account.php" method="get">
+          <form action="signUp.php" method="get">
             <button class ="btn btn-primary" type="submit" formtarget"_blank" style="float:right;">Create Account</button>
           </form>
           <?php
