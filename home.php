@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+  include 'functions.php';
+  session_start();
+  isLoggenIn();
+?>
 <!DOCTYPE html>
 <html>
   <head>
