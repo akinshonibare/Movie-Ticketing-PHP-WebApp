@@ -1,7 +1,7 @@
 <?php
   include 'functions.php';
   session_start();
-  isLoggenIn();
+  isLoggedIn();
 ?>
 <!DOCTYPE html>
 <html>
