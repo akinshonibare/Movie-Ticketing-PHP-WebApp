@@ -12,11 +12,12 @@ function showMovies(){
   $query = "SELECT * FROM Movie";
   $result = mysqli_query($connection, $query);
 
-  while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    echo "<div class='col-xs-12 col-sm-3 col-md-4>'";
-    echo "Name: ".$row["name"]."<br>";
+  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    echo '<div class="col-xs-12 col-sm-3 col-md-4">';
+    echo "Movie Title: ".$row["title"]."<br>";
     echo "Running Time: ".$row["running_time"]."<br>";
-    echo "</div>"
+    echo "Rating: ".$row["rating"]."<br>";
+    echo "</div>";
   }
 }
 
