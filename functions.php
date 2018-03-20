@@ -13,8 +13,18 @@ function showMovies(){
   $result = mysqli_query($connection, $query);
   echo '<div class="container-fluid">';
   echo '<div class="row">';
+  // $i = -1;
   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    // $i++;
+    // $movie[$i]['movie_id'] = $row["movie_id"];
+    // $movie[$i]['title'] = $row["title"];
+    // $movie[$i]['running_time'] = $row["running_time"];
+    // $movie[$i]['rating'] = $row["rating"];
+    
     echo '<div class="col-xs-12 col-sm-4 col-md-3">';
+    $image="movie_images/".$row["movie_id"].".jpg";
+    echo "<img src= '$image'/>";
+    echo "<br>";
     echo "Movie Title: ".$row["title"]."<br>";
     echo "Running Time: ".$row["running_time"]."<br>";
     echo "Rating: ".$row["rating"]."<br>";
