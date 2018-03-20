@@ -9,18 +9,36 @@ function isLoggedIn(){
 function showMovies(){
   global $connection;
 
+  echo '<div class="showings-jumbo jumbotron">
+          <h1 class="display-4">Showings</h1>
+        </div>
+  ';
+  $complexQuery = "SELECT * FROM Theatre_Complex";
+  $complexResult = mysqli_query($connection, $complexQuery);
+  // Complex Selector
+  echo '
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="complex_select">Select Complex</label>
+        </div>
+        <select class="custom-select" id="complex_select">
+          <option selected>Choose...</option>';
+          while ($row = mysqli_fetch_array($complexResult, MYSQLI_ASSOC)) {
+            echo '<option value="'.$row["complex_id"].'">'.$row["name"].'</option>';
+          }
+            echo '
+        </select>
+      </div>
+      </div>
+      </div>
+      <div class="row">
+            ';
   $query = "SELECT * FROM Movie";
   $result = mysqli_query($connection, $query);
-  echo '<div class="container-fluid">';
-  echo '<div class="row">';
-  // $i = -1;
   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    // $i++;
-    // $movie[$i]['movie_id'] = $row["movie_id"];
-    // $movie[$i]['title'] = $row["title"];
-    // $movie[$i]['running_time'] = $row["running_time"];
-    // $movie[$i]['rating'] = $row["rating"];
-    
     echo '<div class="col-xs-12 col-sm-4 col-md-3">';
     $image="movie_images/".$row["movie_id"].".jpg";
     echo "<img src= '$image'/>";
@@ -28,10 +46,12 @@ function showMovies(){
     echo "Movie Title: ".$row["title"]."<br>";
     echo "Running Time: ".$row["running_time"]."<br>";
     echo "Rating: ".$row["rating"]."<br>";
+    echo "ID: ".$row["movie_id"]."<br>";
     echo "</div>";
   }
   echo '</div';
   echo '</div';
+  echo '</div>';
 }
 
 function addInfo(){

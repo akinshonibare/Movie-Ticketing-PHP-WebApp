@@ -3,12 +3,7 @@
   session_start();
   isLoggedIn();
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-  </head>
+<?php include("header.html");?>
   <body>
     <h1>Home</h1>
     <?php

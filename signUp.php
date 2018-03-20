@@ -2,22 +2,10 @@
   include "functions.php";
   addInfo();
 ?>
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title></title>
-    <style>
-    body {
-      background-color: linen;
-    }
-    </style>
-  </head>
+<?php include("header.html");?>
   <body>
     <div class="container">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
            <h1>create account</h1>
             <form action="signUp.php" method="post">
                 <div class="form-group">
