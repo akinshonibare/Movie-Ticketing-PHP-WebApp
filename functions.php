@@ -94,4 +94,39 @@ function addInfo(){
             }
         }
 }
+
+
+//<!-- Under Construction -->
+function showProfile(){
+  global $connection;
+
+  echo '<div class="showings-jumbo jumbotron">
+          <h1 class="display-4">Showings</h1>
+        </div>
+  ';
+  $userQuery = "SELECT * FROM Customer WHERE account_number=".$_SESSION["account number"];
+  $userResult = mysqli_query($connection, $userQuery);
+
+  while ($row = mysqli_fetch_array($userResult, MYSQLI_ASSOC)) {
+    echo '<div class="col-xs-12 col-sm-4 col-md-3">';
+    //$image="movie_images/".$row["movie_id"].".jpg";
+    //echo "<img src= '$image'/>";
+    //echo "<br>";
+    echo ''.$row["first_name"].'<br>';
+    echo ''.$row["last_name"].'<br>';
+    echo ''.$row["street"].'<br>';
+    echo ''.$row["city"].'<br>';
+    echo ''.$row["pc"].'<br>';
+    echo ''.$row["phone_number"].'<br>';
+
+    //echo ".$row['last_name'].'<br>''";
+    //echo ".$row['city'].'<br>''";
+    //echo "ID: ".$row["movie_id"]."<br>";
+    //echo "</div>";
+  }
+  echo '</div';
+  //echo '</div';
+  //echo '</div>';
+}
+
 ?>
