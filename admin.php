@@ -5,8 +5,7 @@
   isAdmin();
 ?>
 <?php include("header.html");?>
-  <body>
-    <h1>Home</h1>
+  <body style="margin-top:56px;" id="admin-wrapper-id">
     <nav class="navbar navbar-light navbar-expand-md" style="background-color:#808080;">
         <div class="container-fluid"><a class="navbar-brand" href="#">OMTS</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
@@ -20,9 +19,72 @@
     </nav>
     <?php
       include "checkLogin.php";
-      echo "Welcome Admin" . "<br>";
-      echo "First Name: " . $_SESSION["first name"]. "<br>";
-      echo "Last Name: " . $_SESSION["last name"] . "<br>";
      ?>
+     <div id="wrapper">
+          <!-- Sidebar -->
+          <div id="sidebar-wrapper">
+            <form action="admin.php" id="admin_sidebar">
+              <ul class="sidebar-nav">
+                  <li class="sidebar-brand">
+                      <a href="#">
+                          OMTS BTS
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" value="about" type="" onclick="post_nav('about');">About</a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="post_nav('users');">Users</a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="post_nav('movies');">Movies</a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="post_nav('theatres');">Theatres</a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="post_nav('complexes');">Complexes</a>
+                  </li>
+              </ul>
+            </form>
+          </div>
+          <!-- /#sidebar-wrapper -->
+
+          <!-- Page Content -->
+          <div id="page-content-wrapper" class="admin-wrapper">
+              <div class="container-fluid">
+                  <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
+                  <h1>Admin</h1>
+                  <?php
+                    if(isset($_POST['title'])){
+                      $option=$_POST['title'];
+                      if($option == "users"){
+                        include 'adminUser.php';
+                      }
+                    }
+                  ?>
+              </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+
+
+      <!-- /#wrapper -->
+
+      <!-- Menu Toggle Script -->
+      <script>
+      // $("#menu-toggle").click(function(e) {
+      //     e.preventDefault();
+      //     $("#wrapper").toggleClass("toggled");
+      // });
+      function post_nav(nav){
+        console.log(nav);
+        $.post( "admin.php", {title:nav},
+        function( data ) {
+          $( "#admin-wrapper-id" ).html( data );
+        });
+      }
+
+      $("#wrapper").toggleClass("toggled");
+      </script>
   </body>
 </html>
