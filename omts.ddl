@@ -2,7 +2,7 @@ DROP DATABASE omts;
 CREATE DATABASE omts; USE omts;
 CREATE TABLE Theatre_Complex(
     complex_id CHAR(9) NOT NULL,
-    NAME VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL,
     street VARCHAR(40) NOT NULL,
     city VARCHAR(40) NOT NULL,
     pc CHAR(6) NOT NULL,

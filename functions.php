@@ -16,6 +16,7 @@ function showMovies(){
   $complexQuery = "SELECT * FROM Theatre_Complex";
   $complexResult = mysqli_query($connection, $complexQuery);
   // Complex Selector
+  
   echo '
     <div class="container-fluid">
     <div class="row">
