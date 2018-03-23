@@ -1,7 +1,8 @@
+DROP DATABASE omts;
 CREATE DATABASE omts; USE omts;
 CREATE TABLE Theatre_Complex(
     complex_id CHAR(9) NOT NULL,
-    NAME VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL,
     street VARCHAR(40) NOT NULL,
     city VARCHAR(40) NOT NULL,
     pc CHAR(6) NOT NULL,
@@ -56,7 +57,7 @@ CREATE TABLE Theatre_Complex(
     credit_card_number CHAR(16) NOT NULL,
     credit_card_expiry CHAR(4) NOT NULL,
     credit_card_cvc CHAR(3) NOT NULL,
-    is_admin BIT NOT NULL,
+    is_admin BIT,
     PRIMARY KEY(account_number)
 ); CREATE TABLE Reservations(
     reservation_number CHAR(9) NOT NULL,
