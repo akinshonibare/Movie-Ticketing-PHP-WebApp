@@ -84,7 +84,7 @@ function addInfo(){
             $password = mysqli_real_escape_string($connection, $password);
 
             $query = "INSERT INTO Customer(account_number, password, first_name, last_name, street, city, pc, phone_number, credit_card_number, credit_card_expiry, credit_card_cvc) ";
-            $query .= "VALUES('$accountNumber','$password','$firstName','$lastName','$street','$city','$pc','$phoneNumber','$creditCardNumber','$creditCardExpiry','$creditCardCVC')";
+            $query .= "VALUES('$accountNumber','$password','$firstName','$lastName','$street','$city','$pc','$phoneNumber','$creditCardNumber','$creditCardExpiry','$creditCardCVC', '0')";
             $result = mysqli_query($connection, $query);
 
             if(!$result){
