@@ -56,7 +56,7 @@ CREATE TABLE Theatre_Complex(
     credit_card_number CHAR(16) NOT NULL,
     credit_card_expiry CHAR(4) NOT NULL,
     credit_card_cvc CHAR(3) NOT NULL,
-    is_admin BIT NOT NULL,
+    is_admin BIT,
     PRIMARY KEY(account_number)
 ); CREATE TABLE Reservations(
     reservation_number CHAR(9) NOT NULL,
@@ -217,8 +217,7 @@ VALUES(
     '8462984692',
     '3748O32485975379',
     '0619',
-    '643',
-    0
+    '643'
 ),(
     '300000003',
     '38973dhb',
@@ -230,8 +229,7 @@ VALUES(
     '3588372917',
     '3853732573285208',
     '0520',
-    '986',
-    0
+    '986'
 ),(
     '400000004',
     'hdbei83971',
@@ -243,8 +241,7 @@ VALUES(
     '3847927398',
     '5867329057364928',
     '1123',
-    '345',
-    0
+    '345'
 ),(
     '500000005',
     '8472hgdqi2',
@@ -256,8 +253,7 @@ VALUES(
     '4850274927',
     '8695744100234785',
     '0729',
-    '424',
-    0
+    '424'
 ),(
     '600000006',
     'hgd3d7932',
@@ -269,8 +265,7 @@ VALUES(
     '3848273769',
     '1836493573958735',
     '0421',
-    '443',
-    0
+    '443'
 );
 INSERT INTO Reservations
 VALUES(
