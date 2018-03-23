@@ -6,6 +6,12 @@ function isLoggedIn(){
   }
 }
 
+function isAdmin(){
+  if($_SESSION["isAdmin"] == 0){
+    header('location: index.php');
+  }
+}
+
 function showMovies(){
   global $connection;
 
