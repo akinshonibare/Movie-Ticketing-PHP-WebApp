@@ -6,7 +6,7 @@
     $account_number = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT first_name, last_name, account_number, phone_number, street, city, pc FROM Customer WHERE account_number = '$account_number' AND password = '$password'";
+    $query = "SELECT first_name, last_name, account_number, phone_number, street, city, pc, is_admin FROM Customer WHERE account_number = '$account_number' AND password = '$password'";
     $result = mysqli_query($connection, $query);
 
     if($result->num_rows == 0){
@@ -17,7 +17,7 @@
       //header('location: home.php?first_name='.$row[0].'&last_name='.$row[1]);
       $_SESSION["first name"] = $row[0];
       $_SESSION["last name"] = $row[1];
-      $_SESSION["isAdmin"] = $row[11];
+      $_SESSION["isAdmin"] = $row[7];
       $_SESSION["loggedIn"] = 'True';
       header('location: home.php');
       // echo "First Name: " . $row[0] . "<br>";

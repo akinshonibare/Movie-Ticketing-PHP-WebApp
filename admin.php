@@ -2,6 +2,7 @@
   include 'functions.php';
   session_start();
   isLoggedIn();
+  isAdmin();
 ?>
 <?php include("header.html");?>
   <body>
@@ -11,10 +12,7 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                  <?php if($_SESSION["isAdmin"] == 1){
-                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
-                  }
-                  ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">logout</a></li>
                 </ul>
             </div>
@@ -22,9 +20,9 @@
     </nav>
     <?php
       include "checkLogin.php";
+      echo "Welcome Admin" . "<br>";
       echo "First Name: " . $_SESSION["first name"]. "<br>";
       echo "Last Name: " . $_SESSION["last name"] . "<br>";
-      echo "admin " . $_SESSION["isAdmin"] . "<br>";
      ?>
   </body>
 </html>
