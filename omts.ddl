@@ -1,3 +1,4 @@
+DROP DATABASE omts;
 CREATE DATABASE omts; USE omts;
 CREATE TABLE Theatre_Complex(
     complex_id CHAR(9) NOT NULL,
