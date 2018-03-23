@@ -16,37 +16,39 @@ function showMovies(){
   global $connection;
 
   echo '<div class="showings-jumbo jumbotron">
-          <h1 class="display-4">Showings</h1>
+          <h1 class="display-4">Movies</h1>
         </div>
   ';
   $complexQuery = "SELECT * FROM Theatre_Complex";
   $complexResult = mysqli_query($connection, $complexQuery);
   // Complex Selector
-  
+
   echo '
     <div class="container-fluid">
-    <div class="row">
-    <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="complex_select">Select Complex</label>
+      <div class="row">
+          <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+            <form action="index.php" id="movie_complex">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <button class="btn btn-success" type="button submit">Select Complex</button>
+                </div>
+                  <select class="custom-select" id="complex_select" name="complex_select">
+                    <option selected>Choose...</option>';
+                    while ($row = mysqli_fetch_array($complexResult, MYSQLI_ASSOC)) {
+                      echo '<option value="'.$row["complex_id"].'">'.$row["name"].'</option>';
+                    }
+                      echo '
+                  </select>
+              </div>
+            </form>
+          </div>
         </div>
-        <select class="custom-select" id="complex_select">
-          <option selected>Choose...</option>';
-          while ($row = mysqli_fetch_array($complexResult, MYSQLI_ASSOC)) {
-            echo '<option value="'.$row["complex_id"].'">'.$row["name"].'</option>';
-          }
-            echo '
-        </select>
-      </div>
-      </div>
-      </div>
       <div class="row">
             ';
   $query = "SELECT * FROM Movie";
   $result = mysqli_query($connection, $query);
   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    echo '<div class="col-xs-12 col-sm-4 col-md-3">';
+    echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
     $image="movie_images/".$row["movie_id"].".jpg";
     echo "<img src= '$image'/>";
     echo "<br>";
@@ -57,8 +59,9 @@ function showMovies(){
     echo "</div>";
   }
   echo '</div';
-  echo '</div';
   echo '</div>';
+  echo '</div>';
+
 }
 
 function addInfo(){
@@ -75,7 +78,6 @@ function addInfo(){
             $creditCardCVC = $_POST['creditCardCVC'];
             $accountNumber = $_POST['accountNumber'];
             $password = $_POST['password'];
-
 
             //used to check input to not mess up database and allow " ' " in names
             $firstName = mysqli_real_escape_string($connection, $firstName);
