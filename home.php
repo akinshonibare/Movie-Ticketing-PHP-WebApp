@@ -4,8 +4,7 @@
   isLoggedIn();
 ?>
 <?php include("header.html");?>
-  <body>
-    <h1>Home</h1>
+  <body style="margin-top:56px;">
     <nav class="navbar navbar-light navbar-expand-md" style="background-color:#808080;">
         <div class="container-fluid"><a class="navbar-brand" href="#">OMTS</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
