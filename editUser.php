@@ -1,9 +1,11 @@
 <?php
+session_start();
 include "database.php";
 include "updateCustomer.php";
-global $connection;
+//updateCust();
+//global $connection;
 
-session_start();
+
 include 'functions.php';
  include("header.html");
  ?>
@@ -27,116 +29,101 @@ include 'functions.php';
         $userQuery = "SELECT * FROM Customer WHERE account_number=".$_SESSION["account number"];
         $userResult = mysqli_query($connection, $userQuery);
         $row = mysqli_fetch_row($userResult);
+        //$_SESSION["account_number"] = $row[0];
         ?>
+
         <div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-				<h5>Sign up once and watch any of our free demos.</h5>
-					<form class="" method="post" action="">
+
+					<form method="post" action="updateCustomer.php">
 
 						<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">First Name</label>
+							<label class="cols-sm-2 control-label">First Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="first_name"  value="<?php echo ''.$row[2].''; ?> " disabled="true"/>
+									<input type="text" class="form-control" name="first_name"  value="<?php echo ''.$row[2].''; ?> " disabled="true">
 								</div>
 							</div>
 						</div>
 
             <div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Last Name</label>
+							<label for="last_name" class="cols-sm-2 control-label">Last Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="last_name"  value="<?php echo ''.$row[3].''; ?>" disabled="true"/>
-								</div>
-							</div>
-						</div>
-<!--
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your Email</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
-								</div>
-							</div>
-						</div>-->
-
-            <div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Current Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">New Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="new_password"  placeholder="Enter your Password"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm_password"  placeholder="Confirm your Password"/>
+									<input type="text" class="form-control" name="last_name" id="last_name"  value="<?php echo ''.$row[3].''; ?>" disabled="true">
 								</div>
 							</div>
 						</div>
 
             <div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Street</label>
+							<label for="new_password" class="cols-sm-2 control-label">Current Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="current_password" id="current_password"  placeholder="Enter your Password">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="new_password" class="cols-sm-2 control-label">New Password </label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="new_password" id="new_password"  placeholder="Enter your Password">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm_password" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="confirm_password" id="confirm_password"  placeholder="Confirm your Password">
+								</div>
+							</div>
+						</div>
+
+            <div class="form-group">
+							<label for="street" class="cols-sm-2 control-label">Street</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="street"  value="<?php echo ''.$row[4].''; ?> "/>
+									<input type="text" class="form-control" name="street" id="street"  value="<?php echo ''.$row[4].''; ?> ">
 								</div>
               </div>
 							</div>
 
               <div class="form-group">
-  							<label for="username" class="cols-sm-2 control-label">City</label>
+  							<label for="city" class="cols-sm-2 control-label">City</label>
   							<div class="cols-sm-10">
   								<div class="input-group">
   									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-  									<input type="text" class="form-control" name="username" id="city"  value="<?php echo ''.$row[5].''; ?>"/>
+  									<input type="text" class="form-control" name="city" id="city"  value="<?php echo ''.$row[5].''; ?>">
   								</div>
   							</div>
                 <div class="form-group">
-    							<label for="username" class="cols-sm-2 control-label">Postal  Code</label>
+    							<label for="postal_code" class="cols-sm-2 control-label">Postal Code</label>
     							<div class="cols-sm-10">
     								<div class="input-group">
     									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-    									<input type="text" class="form-control" name="username" id="postal_code"  value="<?php echo ''.$row[6].''; ?>"/>
+    									<input type="text" class="form-control" name="postal_code" id="postal_code"  value="<?php echo ''.$row[6].''; ?>">
     								</div>
     							</div>
                 </div>
 
 						<div class="form-group ">
-							<a href="" target="_blank" type="button" id="submit" class="btn btn-primary btn-lg btn-block login-button">Submit Changes</a>
+              <input class ="btn btn-success" type="submit" name="submit" value="Submit Changes" style="float:left;">
+							<!--<a href="" target="_blank" type="button" name="submit" id="submit" class="btn btn-primary btn-lg btn-block login-button">Submit Changes</a>-->
 						</div>
 
 					</form>
+
+
 				</div>
 			</div>
 		</div>
