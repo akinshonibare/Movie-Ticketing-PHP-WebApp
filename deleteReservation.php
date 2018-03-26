@@ -4,13 +4,14 @@ session_start();
 include "database.php";
 //include "edituser.php";
 global $connection;
+$val = $_POST['action-button'];
+echo $val;
+    //if(isset($_POST['submit'])) {
+      //$query = "DELETE FROM reservations WHERE reservation_number = '$acc_no'";
+      //$pwq = mysqli_query($connection, $query);
 
-    if(isset($_POST['submit'])) {
-      $query = "DELETE FROM reservations WHERE reservation_number = '$acc_no'";
-      $pwq = mysqli_query($connection, $query);
 
-
-      header('location: reservations.php');
+      //header('location: reservations.php');
 
 
 
@@ -33,6 +34,6 @@ global $connection;
       //   header('location: home.php');
         // echo "First Name: " . $row[0] . "<br>";
         // echo "Last Name: " . $row[1] . "<br>";
-      }
+    //  }
 
   ?>

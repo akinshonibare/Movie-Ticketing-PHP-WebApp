@@ -51,6 +51,7 @@ include 'functions.php';
           echo "Start Time: ".$showing_row[2]."<br>";
           echo "Theatre #: ".$showing_row[3]."<br>";
           echo "Tickets: ".$row["num_tickets_reserved"]."<br>";
+
           echo '<div class="span2">
               <div class="btn-group">
                   <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
@@ -58,12 +59,24 @@ include 'functions.php';
                       <span class="icon-cog icon-white"></span><span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="reservations.php"><span class="fas fa-book"></span> Leave Review</a></li>
-                      <li><a href="edituser.php"><span class="far fa-frown"></span> Refund Tickets</a></li>
+                  <form action="leaveReview.php"  method = "post">
+                  <li> <span class="fas fa-book"></span><input type="submit" name="action" value="Leave Review" />
+                  </span><input type="hidden" name="action-button" value="'.$row['movie_id'].'" /></li>
+
+                  </form>
+                  <form action="deleteReservation.php"  method = "post">
+                  <li> <span class="far fa-frown"></span><input type="submit" name="action" value="Refund" />
+                  </span><input type="hidden" name="action-button" value="'.$sid.'" /></li>
+
+                  </form>
+
                   </ul>
               </div>
           </div>';
-          echo "</div>";
+          //<li><a href="reservations.php"><span class="fas fa-book"></span> Leave Review</a></li>
+          //<li><a href="edituser.php"><span class="far fa-frown"></span> Refund Tickets</a></li>
+          echo '</div>';
+          $count = $count+1;
         }
         echo '</div';
         echo '</div';
