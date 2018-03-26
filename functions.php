@@ -16,7 +16,7 @@ function showMovies(){
   global $connection;
 
   echo '<div class="showings-jumbo jumbotron">
-          <h1 class="display-4">Movies</h1>
+          <h1 class="display-4">Showings</h1>
         </div>
   ';
   $complexQuery = "SELECT * FROM Theatre_Complex";
