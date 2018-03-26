@@ -4,30 +4,14 @@ session_start();
 include "database.php";
 //include "edituser.php";
 global $connection;
-
-    if(isset($_POST['submit'])) {
-      $cityName = $_POST['city'];
-      $acc_no = $_SESSION["account number"];
-      $street_name = $_POST['street'];
-      $current_password = $_POST['current_password'];
-      $new_password = $_POST['new_password'];
-      $confirm_password = $_POST['confirm_password'];
-      $postalcode = $_POST['postal_code'];
-
-      $query = "SELECT password FROM Customer WHERE account_number = '$acc_no'";
-      $pwq = mysqli_query($connection, $query);
-      $row = mysqli_fetch_row($pwq);
-      $pw = $row[0];
-      if( $current_password == $pw){
-        if($new_password == $confirm_password){
-          $pw = $new_password;
-        }
-      }
+$val = $_POST['action-button'];
+echo $val;
+    //if(isset($_POST['submit'])) {
+      //$query = "DELETE FROM reservations WHERE reservation_number = '$acc_no'";
+      //$pwq = mysqli_query($connection, $query);
 
 
-      mysqli_query($connection, "UPDATE customer SET password = '$pw', street = '$street_name', city = '$cityName', pc = '$postalcode'  WHERE account_number = '$acc_no'");
-      //$result = mysqli_query($connection, $query);
-      header('location: editUser.php');
+      //header('location: reservations.php');
 
 
 
@@ -50,6 +34,6 @@ global $connection;
       //   header('location: home.php');
         // echo "First Name: " . $row[0] . "<br>";
         // echo "Last Name: " . $row[1] . "<br>";
-      }
+    //  }
 
   ?>

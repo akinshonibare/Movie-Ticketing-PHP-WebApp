@@ -23,9 +23,13 @@ include 'functions.php';
  ?>
 
 <body>
+    <?php if (!isset($_SESSION['loggedIn'])){
+      include("navbar.html");
+  }
+  else{
+    ?>
     <?php include("navbar.html");?>
     <section id="cover">
-        <? //php showProfile();?>
         <?php
         echo '<div class="showings-jumbo jumbotron">
                 <h1 class="display-4">Your Profile</h1>
@@ -56,7 +60,7 @@ include 'functions.php';
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="edituser.php"><span class="icon-wrench"></span> Modify</a></li>
-                            <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
+                            <li><a href="reservations.php"><span class="fas fa-archive"></span> Your Orders</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,6 +68,9 @@ include 'functions.php';
         </div>
 
     </section>
+    <?php
+  }
+  ?>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
