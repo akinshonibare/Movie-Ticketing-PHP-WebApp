@@ -4,7 +4,7 @@
   isLoggedIn();
   isAdmin();
 ?>
-<?php include("header.html");?>
+<?php include "header.html";?>
   <body style="margin-top:56px;" id="admin-wrapper-id">
     <nav class="navbar navbar-light navbar-expand-md" style="background-color:#808080;">
         <div class="container-fluid"><a class="navbar-brand" href="#">OMTS</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -49,13 +49,14 @@
               </ul>
             </form>
           </div>
+
           <!-- /#sidebar-wrapper -->
 
           <!-- Page Content -->
           <div id="page-content-wrapper" class="admin-wrapper">
               <div class="container-fluid">
                   <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
-                  <h1>Admin</h1>
+                  <h2>ADMIN</h2>
                   <?php
                     if(isset($_POST['title'])){
                       $option=$_POST['title'];
@@ -63,6 +64,99 @@
                         include 'adminUser.php';
                       }elseif ($option == "movies") {
                         include 'adminMovies.php';
+                        //show Movies
+                      ?>
+                         <table>
+
+                         <?php
+                      //
+                      //   global $connection;
+                      //
+                      //   $query = "SELECT * FROM Movie";
+                      //   $select_movie = mysqli_query($connection,$query);
+                      //
+                      //   while($row = mysqli_fetch_assoc($select_movie)) {
+                      //       $movieId             = $row['movie_id'];
+                      //       $title            = $row['title'];
+                      //       $runningTime      = $row['running_time'];
+                      //       $rating      = $row['rating'];
+                      //       $plotSynopsis       = $row['plot_synopsis'];
+                      //       $director            = $row['director'];
+                      //       $productionComp      = $row['production_company'];
+                      //       $supplier      = $row['name_of_supplier'];
+                      //       $startDate       = $row['start_date'];
+                      //       $endDate       = $row['end_date'];
+                      //
+                      //       echo "<tr>";
+                      //       echo "<td>$movieId </td>";
+                      //       echo "<td>$title</td>";
+                      //       echo "<td>$runningTime</td>";
+                      //       echo "<td>$rating</td>";
+                      //       echo "<td>$plotSynopsis</td>";
+                      //       echo "<td>$director</td>";
+                      //       echo "<td>$productionComp</td>";
+                      //       echo "<td>$supplier</td>";
+                      //       echo "<td>$startDate</td>";
+                      //       echo "<td>$endDate</td>";
+                      //       echo "<td><a href='admin.php?delete={$movieId}'>Delete</a></td>";
+                      //       echo "</tr>";
+                      //   }
+
+                        ?>
+                        <!-- add movie -->
+                      <div class="container">
+                        <div class="col-sm-6">
+                          <h5>add movie</h5>
+                          <form action="login_create.php" method="post">
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Movie ID">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Title">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Running Time">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Rating">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Plot Synopsis">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Director">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Production Company">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Name of Supplier">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="Start Date">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" placeholder="movie_id">
+                        </div>
+
+
+                        <input class="btn btn-secondary" type="submit" name="submit" value="Submit">
+
+                      </form>
+                      </div>
+                    </div>
+
+                    <?php
                       }
                     }
                   ?>
