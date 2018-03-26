@@ -103,4 +103,94 @@ function addInfo(){
             }
         }
 }
+
+function addMovie(){
+        global $connection;
+        if(isset($_POST['submitMovie'])) {
+            $movie_id = $_POST['movie_id'];
+            $title = $_POST['title'];
+            $running_time = $_POST['running_time'];
+            $rating = $_POST['rating'];
+            $plot_synopsis = $_POST['plot_synopsis'];
+            $director = $_POST['director'];
+            $production_company = $_POST['production_company'];
+            $name_of_supplier = $_POST['name_of_supplier'];
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
+
+
+            $query = "INSERT INTO Movie(movie_id, title, running_time, rating, plot_synopsis, director, production_company, name_of_supplier, start_date, end_date) ";
+            $query .= "VALUES('$movie_id','$title','$running_time','$rating','$plot_synopsis', '$director', '$production_company', '$name_of_supplier', '$start_date', '$end_date')";
+            $result = mysqli_query($connection, $query);
+
+            if(!$result){
+                die('Query Failed' . mysqli_error());
+            }else{
+                echo "record created";
+            }
+        }
+    }
+
+    function showAllData(){
+        global $connection;
+        $query = "SELECT * FROM Movie";
+        $result = mysqli_query($connection, $query);
+        if(!$result){
+            die('Query Failed' . mysqli_error());
+        }
+
+        while($row = mysqli_fetch_assoc($result)){
+            $id=$row['movie_id'];
+            echo "<option value='$id'>$id</option>";
+        }
+     }
+
+     function deleteMovie(){
+        if(isset($_POST['delete'])) {
+            global $connection;
+            $title = $_POST['title'];
+            $movie_id      = $_POST['movie_id'];
+
+            $query = "DELETE FROM Movie ";
+            $query .= "WHERE movie_id = $movie_id and title = $title";
+
+            $result = mysqli_query($connection, $query);
+            header('location: admin.php');
+            // if(!$result){
+            //     die("query failed" . mysqli_error($connection));
+            // }else{
+            //     echo "record deleted";
+            // }
+        }
+
+    }
+
+    function updateMovie(){
+        global $connection;
+        if(isset($_POST['update'])) {
+          $movie_id = $_POST['movie_id'];
+          // $title = $_POST['title'];
+          // $running_time = $_POST['running_time'];
+          // $rating = $_POST['rating'];
+          // $plot_synopsis = $_POST['plot_synopsis'];
+          // $director = $_POST['director'];
+          // $production_company = $_POST['production_company'];
+          // $name_of_supplier = $_POST['name_of_supplier'];
+          $start_date = $_POST['start_date'];
+          $end_date = $_POST['end_date'];
+
+            $query = "UPDATE Movie SET ";
+            $query .= "start_date = '$start_date', ";
+            $query .= "end_date = '$end_date' ";
+            $query .= "WHERE movie_id = $movie_id ";
+
+            $result = mysqli_query($connection, $query);
+            header('location: admin.php');
+            // if(!$result){
+            //     die("query failed" . mysqli_error($connection));
+            // }else{
+            //         echo "record updated";
+            // }
+        }
+    }
 ?>
