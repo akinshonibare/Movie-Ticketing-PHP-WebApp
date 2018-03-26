@@ -25,7 +25,6 @@ include 'functions.php';
 <body>
     <?php include("navbar.html");?>
     <section id="cover">
-        <? //php showProfile();?>
         <?php
         echo '<div class="showings-jumbo jumbotron">
                 <h1 class="display-4">Your Profile</h1>
@@ -56,7 +55,7 @@ include 'functions.php';
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="edituser.php"><span class="icon-wrench"></span> Modify</a></li>
-                            <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
+                            <li><a href="reservations.php"><span class="fas fa-archive"></span> Your Orders</a></li>
                         </ul>
                     </div>
                 </div>

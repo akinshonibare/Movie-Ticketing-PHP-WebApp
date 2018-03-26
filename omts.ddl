@@ -74,6 +74,7 @@ CREATE TABLE Theatre_Complex(
     FOREIGN KEY(complex_id) REFERENCES Theatre_Complex(complex_id)
 ); CREATE TABLE Showing(
     showing_id CHAR(9) NOT NULL,
+	showing_date VARCHAR(12) NOT NULL,
     movie_id CHAR(9) NOT NULL,
     complex_id CHAR(9) NOT NULL,
     start_time CHAR(9) NOT NULL,
@@ -81,7 +82,7 @@ CREATE TABLE Theatre_Complex(
     seats_available INTEGER,
     PRIMARY KEY(showing_id),
     FOREIGN KEY(movie_id) REFERENCES Movie(movie_id),
-    FOREIGN KEY(complex_id) REFERENCES Theatre(complex_id),
+    FOREIGN KEY(complex_id) REFERENCES theatre_complex(complex_id),
     FOREIGN KEY(theatre_num) REFERENCES Theatre(theatre_num)
 ); INSERT INTO Theatre_Complex
 VALUES(
@@ -293,20 +294,13 @@ VALUES(
 );
 INSERT INTO Showing
 VALUES(
-    'SID000001',
-    '10180301',
-    '000000001',
-    '000000237',
-    1,
-    200
-),(
-    'SID000002',
-    '10180303',
-    '000000001',
-    '000000452',
-    2,
-    350
-);
+    'SID000001',	'MAR 30, 2018',    '10180301',    '000000002',    '000000237',    '1',    '200'),
+    ( 'SID000002','MAR 30, 2018','10180303','000000001','000000452','2','350'
+),
+('SID000003','MAR 28, 2018','10180304','000000001','000000237','2','200'),
+('SID000004','MAR 29, 2018','10180301','000000001','000000452','2','350'),
+('SID000005','MAR 28, 2018','10180304','000000002','000140237','2','200'),
+('SID000006','MAR 29, 2018','10180301','000000002','000000452','1','350');
 INSERT INTO Movie_Reviews
 VALUES(
     '10180301',
