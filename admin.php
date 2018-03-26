@@ -60,6 +60,8 @@
                       $option=$_POST['title'];
                       if($option == "users"){
                         include 'adminUser.php';
+                      }elseif ($option == "movies") {
+                        include 'adminMovies.php';
                       }
                     }
                   ?>
