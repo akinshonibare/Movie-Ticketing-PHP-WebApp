@@ -10,11 +10,12 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Movies</a></li>
                   <?php if($_SESSION["isAdmin"] == 1){
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
                   }
                   ?>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">logout</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
