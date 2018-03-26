@@ -40,7 +40,6 @@
                       <?php showAllData();?>
                     </select>
                 </div>
-                <input class="btn btn-primary" type="submit" name="update" value="Update">
             </form>
         </div>
     </div>

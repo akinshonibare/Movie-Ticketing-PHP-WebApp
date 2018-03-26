@@ -1,5 +1,5 @@
-<table class="table table-bordered table-hover">
-           <thead>
+<table class="table table-hover table-striped">
+           <thead class="table-dark">
                <tr>
                    <th>Account Number</th>
                    <th>First Name</th>
@@ -9,7 +9,7 @@
                    <th>Reservations</th>
 
                </tr>
-           </thead>
+           </thead class="table-light">
                  <tbody>
 <?php
 
@@ -39,8 +39,10 @@ while($row = mysqli_fetch_assoc($select_users)) {
     echo "<td>$lastName</td>";
     echo "<td>$street</td>";
     echo "<td>$phoneNumber</td>";
-    echo "<td><a href='admin.php?reservationNum={$reservation}'>$reservation</a></td>";
-    echo "<td><a href='deleteuser.php'>Delete</a></td>";
+    echo "<td><a href='cusReservation.php?reservation={$accountNumber}'>$reservation</a></td>";
+    // echo "<td><a href='deleteuser.php'>Delete</a></td>";
+    echo "<td><a href='admin.php?delete={$accountNumber}'>Delete</a></td>";
+
 
 
     // echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
@@ -57,49 +59,4 @@ while($row = mysqli_fetch_assoc($select_users)) {
 
 
 <?php
-
-// if(isset($_GET['change_to_admin'])) {
-//
-//    $the_user_id = escape($_GET['change_to_admin']);
-//
-//    $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id   ";
-//    $change_to_admin_query = mysqli_query($connection, $query);
-//    header("Location: users.php");
-//
-//
-// }
-
-// if(isset($_GET['change_to_sub'])){
-//
-//    $the_user_id = escape($_GET['change_to_sub']);
-//
-//
-//    $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id   ";
-//    $change_to_sub_query = mysqli_query($connection, $query);
-//    header("Location: users.php");
-//
-//
-//
-// }
-
-// if(isset($_GET['delete'])){
-//
-//    if(isset($_SESSION['user_role'])) {
-//
-//        if($_SESSION['user_role'] == 'admin') {
-//
-//        $the_user_id = escape($_GET['delete']);
-//
-//        $query = "DELETE FROM users WHERE user_id = {$the_user_id} ";
-//        $delete_user_query = mysqli_query($connection, $query);
-//        header("Location: users.php");
-//
-//            }
-//
-//
-//        }
-//
-//
-//    }
-
 ?>

@@ -1,5 +1,5 @@
-<table class="table table-bordered table-hover">
-           <thead>
+<table class="table table-hover table-striped">
+           <thead class="table-dark">
                <tr>
                    <th>Movie ID</th>
                    <th>Title</th>
@@ -13,7 +13,7 @@
                    <th>End Date</th>
 
                </tr>
-           </thead>
+           </thead class="table-light">
                  <tbody>
 <?php
 
@@ -47,7 +47,8 @@ while($row = mysqli_fetch_assoc($select_movie)) {
     echo "<td>$supplier</td>";
     echo "<td>$startDate</td>";
     echo "<td>$endDate</td>";
-    echo "<td><a href='deleteMovies.php'>Delete</a></td>";
+    // echo "<td><a href='deleteMovies.php'>Delete</a></td>";
+    echo "<td><a href='admin.php?deleteMovie={$movieId}'>Delete</a></td>";
     echo "</tr>";
 }
      ?>

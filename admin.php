@@ -4,6 +4,9 @@
   isLoggedIn();
   isAdmin();
   addMovie();
+  deleteMovie();
+  deleteMovie2();
+  deleteUser2();
 ?>
 
 <?php include "header.html";?>
@@ -64,9 +67,11 @@
                       $option=$_POST['title'];
                       if($option == "users"){
                         include 'adminUser.php';
+                      }elseif ($option == "about") {
+                        include 'adminAbout.php';
                       }elseif ($option == "movies") {
                         include 'adminMovies.php';
-                        //show Movies
+
                       ?>
                          <table>
                         <div class="container" style="padding-top:25px">

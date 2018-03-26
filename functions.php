@@ -179,6 +179,25 @@ function addMovie(){
 
     }
 
+    function deleteMovie2(){
+       if(isset($_GET['deleteMovie'])) {
+           global $connection;
+           $movieId      = $_GET['deleteMovie'];
+
+           $query = "DELETE FROM Movie ";
+           $query .= "WHERE movie_id = $movieId";
+
+           $result = mysqli_query($connection, $query);
+           header('location: admin.php');
+           // if(!$result){
+           //     die("query failed" . mysqli_error($connection));
+           // }else{
+           //     echo "record deleted";
+           // }
+       }
+
+   }
+
     function deleteUser(){
        if(isset($_POST['delete'])) {
            global $connection;
@@ -197,6 +216,25 @@ function addMovie(){
        }
 
    }
+
+   function deleteUser2(){
+      if(isset($_GET['delete'])) {
+          global $connection;
+          $deleteAC      = $_GET['delete'];
+
+          $query = "DELETE FROM Customer ";
+          $query .= "WHERE account_number = $deleteAC";
+
+          $result = mysqli_query($connection, $query);
+          header('location: admin.php');
+          // if(!$result){
+          //     die("query failed" . mysqli_error($connection));
+          // }else{
+          //     echo "record deleted";
+          // }
+      }
+
+  }
 
     function updateMovie(){
         global $connection;
