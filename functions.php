@@ -145,6 +145,20 @@ function addMovie(){
         }
      }
 
+     function showAllAC(){
+         global $connection;
+         $query = "SELECT * FROM Customer";
+         $result = mysqli_query($connection, $query);
+         if(!$result){
+             die('Query Failed' . mysqli_error());
+         }
+
+         while($row = mysqli_fetch_assoc($result)){
+             $id=$row['account_number'];
+             echo "<option value='$id'>$id</option>";
+         }
+      }
+
      function deleteMovie(){
         if(isset($_POST['delete'])) {
             global $connection;
@@ -164,6 +178,25 @@ function addMovie(){
         }
 
     }
+
+    function deleteUser(){
+       if(isset($_POST['delete'])) {
+           global $connection;
+           $account_num      = $_POST['account_number'];
+
+           $query = "DELETE FROM Customer ";
+           $query .= "WHERE account_number = $account_num";
+
+           $result = mysqli_query($connection, $query);
+           header('location: admin.php');
+           // if(!$result){
+           //     die("query failed" . mysqli_error($connection));
+           // }else{
+           //     echo "record deleted";
+           // }
+       }
+
+   }
 
     function updateMovie(){
         global $connection;

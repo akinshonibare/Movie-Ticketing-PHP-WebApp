@@ -47,7 +47,7 @@ while($row = mysqli_fetch_assoc($select_movie)) {
     echo "<td>$supplier</td>";
     echo "<td>$startDate</td>";
     echo "<td>$endDate</td>";
-    echo "<td><a href='admin.php?delete={$movieId}'>Delete</a></td>";
+    echo "<td><a href='deleteMovies.php'>Delete</a></td>";
     echo "</tr>";
 }
      ?>

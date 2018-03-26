@@ -7,7 +7,7 @@
                    <th>Street</th>
                    <th>Phone Number</th>
                    <th>Reservations</th>
-                   
+
                </tr>
            </thead>
                  <tbody>
@@ -40,7 +40,7 @@ while($row = mysqli_fetch_assoc($select_users)) {
     echo "<td>$street</td>";
     echo "<td>$phoneNumber</td>";
     echo "<td><a href='admin.php?reservationNum={$reservation}'>$reservation</a></td>";
-    echo "<td><a href='admin.php?delete={$accountNumber}'>Delete</a></td>";
+    echo "<td><a href='deleteuser.php'>Delete</a></td>";
 
 
     // echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
