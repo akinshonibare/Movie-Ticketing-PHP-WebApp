@@ -30,10 +30,21 @@ width: 100%;
   text-align: center;
   height: 150px;
 }
+.showing-banner{
+  padding-top: 20px;
+  cursor: pointer;
+}
+.showing-banner:hover{
+  background-color: #dcc5af;
+}
 /* Theatre Complex*/
 .complex-row{
   text-align: center;
 }
 .complex-header{
   text-align: center;
+}
+/* Movie Showing */
+.seats-label{
+  display: inline;
 }

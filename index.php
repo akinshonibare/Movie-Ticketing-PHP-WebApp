@@ -33,7 +33,7 @@ include 'functions.php';
         global $connection;
 
         echo '<div class="showings-jumbo jumbotron">
-                <h1 class="display-4">Showings</h1>
+                <h1 class="display-4">All Showings</h1>
               </div>
         ';
         $complexQuery = "SELECT * FROM Theatre_Complex";
@@ -81,7 +81,7 @@ include 'functions.php';
                   echo '<div class="col-sm-12 text-center"> <h5>No Showing Results :(</h5></div>';
                 } else {
                 while ($row = mysqli_fetch_array($showingResult, MYSQLI_ASSOC)) {
-                  echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
+                  echo "<div class=\"col-xs-12 col-sm-4 col-md-3 text-center showing-banner\" id=\"".$row["showing_id"]."\">";
                   $image="movie_images/".$row["movie_id"].".jpg";
                   echo "<img src= '$image'/>";
                   echo "<br>";
@@ -91,7 +91,7 @@ include 'functions.php';
                   echo "Start Date: ".$row["start_date"]."<br>";
                   echo "End Date: ".$row["end_date"]."<br>";
                   echo "Rating: ".$row["rating"]."<br>";
-                  echo "ID: ".$row["movie_id"]."<br>";
+                  echo "<div class=\"showing-banner-id\" style = \"visibility: hidden\">".$row["showing_id"]."</div>";
                   echo "</div>";
                 }
                 echo "</div>";
@@ -133,5 +133,25 @@ include 'functions.php';
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+
+    var showingIDS = document.getElementsByClassName('showing-banner');
+    if(showingIDS){
+      console.log("showing IDS", showingIDS);
+      for(var i = 0; i < showingIDS.length; i++){
+        showingIDS[i].addEventListener("click", function(){
+          console.log(this.id + " clicked");
+          handleShowingClick(this.id);
+        });
+      }
+    }
+
+    function handleShowingClick(showingID){
+      if (showingID) {
+        window.location = 'showing.php?showingID='+showingID;
+      }
+    }
+    </script>
 </body>
 </html>
