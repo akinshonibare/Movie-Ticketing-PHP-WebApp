@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+session_start();
 include "database.php";
 include "header.html";
 include "navbar.html";
