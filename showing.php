@@ -17,6 +17,7 @@ include("header.html");
                   ?>
                   <?php
                   if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
+                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>';
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>';
                   } else {
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Login</a></li>';

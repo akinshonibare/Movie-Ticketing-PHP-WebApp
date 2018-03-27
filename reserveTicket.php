@@ -2,7 +2,6 @@
   session_start();
   include 'functions.php';
   include("header.html");
-  global $connection;
 ?>
 <body>
   <?php
@@ -15,7 +14,16 @@
     $num_tickets_reserved = $_POST['num_seats'];
 
     //Post new reservation to database
-    
+    $reservationQuery = "INSERT INTO Reservations (num_tickets_reserved,account_number,showing_id,movie_id,complex_id,theatre_num) ";
+    $reservationQuery .= "VALUES('$num_tickets_reserved','$account_number','$showing_id','$movie_id','$complex_id','$theatre_num')";
+    $result = mysqli_query($connection, $reservationQuery);
+    if(!$result){
+        die('Query Failed' . mysqli_error());
+    }else{
+        echo "Seats Reserved";
+        header( "refresh:3;url=profile.php" );
+    }
+
   }
 ?>
 
