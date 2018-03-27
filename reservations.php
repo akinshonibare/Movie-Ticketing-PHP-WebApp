@@ -7,7 +7,7 @@ include 'functions.php';
 <?php include("header.html");?>
 <body>
   <nav class="navbar navbar-light navbar-expand-md" style="background-color:#808080;">
-      <div class="container-fluid"><a class="navbar-brand" href="#">OMTS</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div class="container-fluid"><a class="navbar-brand" href="index.php">OMTS</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse"
               id="navcol-1">
               <ul class="nav navbar-nav ml-auto">
@@ -105,31 +105,7 @@ include 'functions.php';
         //echo '</div';
       }
         ?>
-        <?php
-        if (isset($_GET['complex_select'])) {
-            $complexID = $_GET['complex_select'];
-            $complex_Query = "SELECT * FROM Theatre_Complex WHERE complex_id=".$complexID;
-            $complexResult = mysqli_query($connection, $complex_Query);
-            $row = mysqli_fetch_row($complexResult);
-            echo
-            '
-              <div class="row" style="background-color:#ffd7b0">
-                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                  <h2>'.$row[1].'</h2>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                  <h4>Street: '.$row[2].'</h4>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                  <h4>City: '.$row[3].'</h4>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                  <h4>Postal Code: '.$row[4].'</h4>
-                </div>
-              </div>
-            ';
-        }
-        ?>
+
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

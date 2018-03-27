@@ -311,13 +311,13 @@ INSERT INTO Movie_Reviews
 VALUES(
     '10180301',
     '100000001',
-    '2018-05-01',
+    '18-05-01',
     10,
     'it was a sick movie'
 ),(
     '10180301',
     '100000002',
-    '2018-05-02',
+    '18-05-02',
     5,
     'it was pretty average'
 );
