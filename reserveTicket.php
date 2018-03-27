@@ -15,6 +15,7 @@
     $num_tickets_reserved = $_POST['num_seats'];
 
     //Post new reservation to database
+    
   }
 ?>
 
