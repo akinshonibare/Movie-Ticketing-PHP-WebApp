@@ -43,8 +43,8 @@ CREATE TABLE Theatre_Complex(
     rating DECIMAL,
     body VARCHAR(140),
     PRIMARY KEY(movie_id, account_number),
-    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id),
-    FOREIGN KEY(account_number) REFERENCES Customer(account_number)
+    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id)  ON DELETE CASCADE,
+    FOREIGN KEY(account_number) REFERENCES Customer(account_number) ON DELETE CASCADE
 ); CREATE TABLE Customer(
     account_number CHAR(9) NOT NULL,
     PASSWORD VARCHAR(40) NOT NULL,
@@ -68,9 +68,9 @@ CREATE TABLE Theatre_Complex(
     complex_id CHAR(9) NOT NULL,
     theatre_num INTEGER NOT NULL,
     PRIMARY KEY(reservation_number),
-    FOREIGN KEY(account_number) REFERENCES Customer(account_number),
-    FOREIGN KEY(showing_id) REFERENCES Showing(showing_id),
-    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id),
+    FOREIGN KEY(account_number) REFERENCES Customer(account_number) ON DELETE CASCADE,
+    FOREIGN KEY(showing_id) REFERENCES Showing(showing_id)  ON DELETE CASCADE,
+    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id)  ON DELETE CASCADE,
     FOREIGN KEY(complex_id) REFERENCES Theatre_Complex(complex_id)
 ); CREATE TABLE Showing(
     showing_id CHAR(9) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE Theatre_Complex(
     theatre_num INTEGER NOT NULL,
     seats_available INTEGER,
     PRIMARY KEY(showing_id),
-    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id),
+    FOREIGN KEY(movie_id) REFERENCES Movie(movie_id)  ON DELETE CASCADE,
     FOREIGN KEY(complex_id) REFERENCES theatre_complex(complex_id),
     FOREIGN KEY(theatre_num) REFERENCES Theatre(theatre_num)
 ); INSERT INTO Theatre_Complex
