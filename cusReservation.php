@@ -33,7 +33,7 @@ if(isset($_GET['reservation'])) {
       <?php
       echo "<h3>Reservations for $resAC</h3>";
       ?>
-    <table class="table table-hover table-striped" style="padding-top:50px">
+    <table class="table table-hover table-striped table-responsive" style="padding-top:50px">
                <thead class="table-dark">
                    <tr>
                        <th>Reservation Number</th>

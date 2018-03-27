@@ -1,4 +1,4 @@
-<table class="table table-hover table-striped">
+<table class="table table-hover table-striped table-responsive">
            <thead class="table-dark">
                <tr>
                    <th>Movie ID</th>
