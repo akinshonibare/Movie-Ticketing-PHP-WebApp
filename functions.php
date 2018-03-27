@@ -131,6 +131,75 @@ function addMovie(){
         }
     }
 
+    function addTheatre(){
+            global $connection;
+            if(isset($_POST['submitTheatre'])) {
+                $complex_id = $_POST['complex_id'];
+                $theatre_num = $_POST['theatre_num'];
+                $max_seats = $_POST['max_seats'];
+                $screen_size = $_POST['screen_size'];
+
+
+                $query = "INSERT INTO Theatre(theatre_num, max_seats, screen_size, complex_id) ";
+                $query .= "VALUES('$theatre_num','$max_seats','$screen_size','$complex_id')";
+                $result = mysqli_query($connection, $query);
+
+                if(!$result){
+                    die('Query Failed' . mysqli_error());
+                }else{
+                    echo "record created";
+                }
+            }
+        }
+
+        function addComplex(){
+                global $connection;
+                if(isset($_POST['submitComplex'])) {
+                    $complex_id = $_POST['complex_id'];
+                    $name = $_POST['name'];
+                    $street = $_POST['street'];
+                    $city = $_POST['city'];
+                    $pc = $_POST['pc'];
+
+
+                    $query = "INSERT INTO Theatre_Complex(complex_id, name, street, city, pc) ";
+                    $query .= "VALUES('$complex_id','$name','$street','$city', '$pc')";
+                    $result = mysqli_query($connection, $query);
+
+                    if(!$result){
+                        die('Query Failed' . mysqli_error());
+                    }else{
+                        echo "record created";
+                    }
+                }
+            }
+
+            function addShowing(){
+                    global $connection;
+                    if(isset($_POST['submitShowing'])) {
+                        $showing_id = $_POST['showing_id'];
+                        $showing_date = $_POST['showing_date'];
+                        $movie_id = $_POST['movie_id'];
+                        $complex_id = $_POST['complex_id'];
+                        $start_time = $_POST['start_time'];
+                        $theatre_num = $_POST['theatre_num'];
+                        $seats_available = $_POST['seats_available'];
+
+
+
+                        $query = "INSERT INTO Showing(showing_id, showing_date, movie_id, complex_id, start_time, theatre_num, seats_available) ";
+                        $query .= "VALUES('$showing_id','$showing_date','$movie_id','$complex_id', '$start_time', '$theatre_num', '$seats_available')";
+                        $result = mysqli_query($connection, $query);
+
+                        if(!$result){
+                            die('Query Failed' . mysqli_error());
+                        }else{
+                            echo "record created";
+                        }
+                    }
+                }
+
+
     function showAllData(){
         global $connection;
         $query = "SELECT * FROM Movie";
@@ -144,6 +213,34 @@ function addMovie(){
             echo "<option value='$id'>$id</option>";
         }
      }
+
+     function showComplexID(){
+         global $connection;
+         $query = "SELECT * FROM Theatre_Complex";
+         $result = mysqli_query($connection, $query);
+         if(!$result){
+             die('Query Failed' . mysqli_error());
+         }
+
+         while($row = mysqli_fetch_assoc($result)){
+             $id=$row['complex_id'];
+             echo "<option value='$id'>$id</option>";
+         }
+      }
+
+      function showTheatreNum(){
+          global $connection;
+          $query = "SELECT DISTINCT(theatre_num) AS uniqueNum FROM Theatre ORDER BY uniqueNum ASC";
+          $result = mysqli_query($connection, $query);
+          if(!$result){
+              die('Query Failed' . mysqli_error());
+          }
+
+          while($row = mysqli_fetch_assoc($result)){
+              $id=$row['uniqueNum'];
+              echo "<option value='$id'>$id</option>";
+          }
+       }
 
      function showAllAC(){
          global $connection;
@@ -254,6 +351,51 @@ function addMovie(){
             $query .= "start_date = '$start_date', ";
             $query .= "end_date = '$end_date' ";
             $query .= "WHERE movie_id = $movie_id ";
+
+            $result = mysqli_query($connection, $query);
+            header('location: admin.php');
+            // if(!$result){
+            //     die("query failed" . mysqli_error($connection));
+            // }else{
+            //         echo "record updated";
+            // }
+        }
+    }
+
+    function updateTheatre(){
+        global $connection;
+        if(isset($_POST['updateTheatre'])) {
+          $max_seats = $_POST['max_seats'];
+          $screen_size = $_POST['screen_size'];
+          $complex_id = $_POST['complex_id'];
+          $theatre_num = $_POST['theatre_num'];
+
+            $query = "UPDATE Theatre SET ";
+            $query .= "max_seats = '$max_seats', ";
+            $query .= "screen_size = '$screen_size' ";
+            $query .= "WHERE complex_id = '$complex_id' AND theatre_num = '$theatre_num'";
+
+            $result = mysqli_query($connection, $query);
+            header('location: admin.php');
+            // if(!$result){
+            //     die("query failed" . mysqli_error($connection));
+            // }else{
+            //         echo "record updated";
+            // }
+        }
+    }
+
+    function updateComplex(){
+        global $connection;
+        if(isset($_POST['updateComplex'])) {
+          $name = $_POST['name'];
+
+          $complex_id = $_POST['complex_id'];
+
+
+            $query = "UPDATE Theatre_Complex SET ";
+            $query .= "name = '$name' ";
+            $query .= "WHERE complex_id = '$complex_id'";
 
             $result = mysqli_query($connection, $query);
             header('location: admin.php');

@@ -3,7 +3,7 @@
   include "functions.php";
   isLoggedIn();
   isAdmin();
-  deleteUser();
+  addTheatre();
 ?>
 
 <?php include "header.html";?>
@@ -24,27 +24,30 @@
       include "checkLogin.php";
      ?>
      <div class="container" style="padding-top:30px">
-        <div class="col-sm-6">
-            <h5>delete user by account number</h5>
-           <form action="deleteuser.php" method="post">
-                <div class="form-group">
-                   <select name="account_number" id="">
-                      <?php showAllAC();?>
-                    </select>
-                </div>
-                <input class="btn btn-primary" type="submit" name="delete" value="Delete">
-            </form>
-            <button type="button" class="btn btn-dark" style="margin-top:30px" onclick="goBack()">Go Back</button>
-        </div>
+       <div class="col-sm-6">
+         <h5>add theatre</h5>
+         <form action="addTheatre.php" method="post">
+       <div class="form-group">
+         <input type="text" name="theatre_num" class="form-control" placeholder="Theatre Number">
+       </div>
 
-    </div>
+       <div class="form-group">
+         <input type="text" name="max_seats" class="form-control" placeholder="Max Seats">
+       </div>
 
+       <div class="form-group">
+         <input type="text" name="screen_size" class="form-control" placeholder="Screen Size">
+       </div>
+       <div class="form-group">
 
+       <label for="complex_id">Choose Complex</label>
+       <select name="complex_id" id="">
+          <?php showComplexID();?>
+        </select>
+      </div>
 
-    <script>
-      function goBack() {
-      window.history.back();
-      }
-    </script>
+       <input class="btn btn-secondary" type="submit" name="submitTheatre" value="Submit">
+     </form>
+     </div>
    </body>
   </html>

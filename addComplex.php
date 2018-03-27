@@ -3,7 +3,7 @@
   include "functions.php";
   isLoggedIn();
   isAdmin();
-  deleteUser();
+  addComplex();
 ?>
 
 <?php include "header.html";?>
@@ -24,27 +24,34 @@
       include "checkLogin.php";
      ?>
      <div class="container" style="padding-top:30px">
-        <div class="col-sm-6">
-            <h5>delete user by account number</h5>
-           <form action="deleteuser.php" method="post">
-                <div class="form-group">
-                   <select name="account_number" id="">
-                      <?php showAllAC();?>
-                    </select>
-                </div>
-                <input class="btn btn-primary" type="submit" name="delete" value="Delete">
-            </form>
-            <button type="button" class="btn btn-dark" style="margin-top:30px" onclick="goBack()">Go Back</button>
-        </div>
+       <div class="col-sm-6">
+         <h5>add complex</h5>
+         <form action="addComplex.php" method="post">
+       <div class="form-group">
+         <input type="text" name="complex_id" class="form-control" placeholder="Complex ID">
+       </div>
 
-    </div>
+       <div class="form-group">
+         <input type="text" name="name" class="form-control" placeholder="Complex Name">
+       </div>
 
+       <div class="form-group">
+         <input type="text" name="street" class="form-control" placeholder="Street">
+       </div>
+       <div class="form-group">
 
+         <div class="form-group">
+           <input type="text" name="city" class="form-control" placeholder="City">
+         </div>
+         <div class="form-group">
 
-    <script>
-      function goBack() {
-      window.history.back();
-      }
-    </script>
+           <div class="form-group">
+             <input type="text" name="pc" class="form-control" placeholder="Postal Code">
+           </div>
+           <div class="form-group">
+
+       <input class="btn btn-secondary" type="submit" name="submitComplex" value="Submit">
+     </form>
+     </div>
    </body>
   </html>

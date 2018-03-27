@@ -3,7 +3,7 @@
   include "functions.php";
   isLoggedIn();
   isAdmin();
-  deleteUser();
+  updateComplex();
 ?>
 
 <?php include "header.html";?>
@@ -25,26 +25,24 @@
      ?>
      <div class="container" style="padding-top:30px">
         <div class="col-sm-6">
-            <h5>delete user by account number</h5>
-           <form action="deleteuser.php" method="post">
+            <h5>update complex</h5>
+           <form action="updateComplex.php" method="post">
                 <div class="form-group">
-                   <select name="account_number" id="">
-                      <?php showAllAC();?>
+                   <label for="name">name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+
+                <div class="form-group">
+                  <label for="complex_id">Select Complex</label>
+                   <select name="complex_id" id="">
+                      <?php showComplexID();?>
                     </select>
                 </div>
-                <input class="btn btn-primary" type="submit" name="delete" value="Delete">
+
+                <input class="btn btn-secondary" type="submit" name="updateComplex" value="Submit">
             </form>
-            <button type="button" class="btn btn-dark" style="margin-top:30px" onclick="goBack()">Go Back</button>
         </div>
-
     </div>
-
-
-
-    <script>
-      function goBack() {
-      window.history.back();
-      }
-    </script>
    </body>
   </html>

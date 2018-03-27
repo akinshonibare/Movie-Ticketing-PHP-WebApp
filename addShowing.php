@@ -3,7 +3,7 @@
   include "functions.php";
   isLoggedIn();
   isAdmin();
-  addMovie();
+  addShowing();
 ?>
 
 <?php include "header.html";?>
@@ -25,49 +25,42 @@
      ?>
      <div class="container" style="padding-top:30px">
        <div class="col-sm-6">
-         <h5>add movie</h5>
-         <form action="addmovies.php" method="post">
+         <h5>add showing</h5>
+         <form action="addShowing.php" method="post">
+       <div class="form-group">
+         <input type="text" name="showing_id" class="form-control" placeholder="Showing ID">
+       </div>
+
+       <div class="form-group">
+         <input type="text" name="showing_date" class="form-control" placeholder="Showing Date">
+       </div>
+
        <div class="form-group">
          <input type="text" name="movie_id" class="form-control" placeholder="Movie ID">
        </div>
-
        <div class="form-group">
-         <input type="text" name="title" class="form-control" placeholder="Title">
-       </div>
 
-       <div class="form-group">
-         <input type="text" name="running_time" class="form-control" placeholder="Running Time">
-       </div>
+         <div class="form-group">
+           <input type="text" name="complex_id" class="form-control" placeholder="Complex ID">
+         </div>
+         <div class="form-group">
 
-       <div class="form-group">
-         <input type="text" name="rating" class="form-control" placeholder="Rating">
-       </div>
+           <div class="form-group">
+             <input type="text" name="start_time" class="form-control" placeholder="Start Time">
+           </div>
+           <div class="form-group">
 
-       <div class="form-group">
-         <input type="text" name="plot_synopsis" class="form-control" placeholder="Plot Synopsis">
-       </div>
+             <div class="form-group">
+               <input type="text" name="theatre_num" class="form-control" placeholder="Theatre Number">
+             </div>
+             <div class="form-group">
 
-       <div class="form-group">
-         <input type="text" name="director" class="form-control" placeholder="Director">
-       </div>
+               <div class="form-group">
+                 <input type="text" name="seats_available" class="form-control" placeholder="Seats Available">
+               </div>
+               <div class="form-group">
 
-       <div class="form-group">
-         <input type="text" name="production_company" class="form-control" placeholder="Production Company">
-       </div>
-
-       <div class="form-group">
-         <input type="text" name="name_of_supplier" class="form-control" placeholder="Name of Supplier">
-       </div>
-
-       <div class="form-group">
-         <input type="text" name="start_date" class="form-control" placeholder="Start Date">
-       </div>
-
-       <div class="form-group">
-         <input type="text" name="end_date" class="form-control" placeholder="End Date">
-       </div>
-
-       <input class="btn btn-secondary" type="submit" name="submitMovie" value="Submit">
+       <input class="btn btn-secondary" type="submit" name="submitShowing" value="Submit">
      </form>
      </div>
    </body>
