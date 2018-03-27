@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "database.php";
 include "updateCustomer.php";
 //updateCust();
@@ -7,7 +6,7 @@ include "updateCustomer.php";
 
 
 include 'functions.php';
- include("header.html");
+include("header.html");
  ?>
 <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

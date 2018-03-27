@@ -60,7 +60,7 @@ CREATE TABLE Theatre_Complex(
     is_admin BIT,
     PRIMARY KEY(account_number)
 ); CREATE TABLE Reservations(
-    reservation_number CHAR(9) NOT NULL,
+    reservation_number int NOT NULL AUTO_INCREMENT,
     num_tickets_reserved INTEGER,
     account_number CHAR(9) NOT NULL,
     showing_id CHAR(9) NOT NULL,
@@ -274,9 +274,16 @@ VALUES(
     '443',
     0
 );
-INSERT INTO Reservations
+
+INSERT INTO Reservations (
+  num_tickets_reserved,
+  account_number,
+  showing_id,
+  movie_id,
+  complex_id,
+  theatre_num
+)
 VALUES(
-    '000000001',
     2,
     '100000001',
     'SID000001',
@@ -284,7 +291,6 @@ VALUES(
     '000000001',
     1
 ),(
-    '000000002',
     5,
     '400000004',
     'SID000002',
