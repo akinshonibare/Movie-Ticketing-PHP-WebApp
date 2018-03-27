@@ -2,38 +2,91 @@
 //function updateCust(){
 session_start();
 include "database.php";
+include "header.html";
+include "navbar.html";
 //include "edituser.php";
 global $connection;
 $val = $_POST['action-button'];
 echo $val;
-    //if(isset($_POST['submit'])) {
-      //$query = "DELETE FROM reservations WHERE reservation_number = '$acc_no'";
-      //$pwq = mysqli_query($connection, $query);
+?>
+<html>
+<body>
+  <section id="cover">
+      <?php
+      global $connection;
+
+      echo '<div class="showings-jumbo jumbotron">
+              <h1 class="display-4">Refund Request</h1>
+            </div>
+      ';
+      //remove WHERE from this query to get all showings and their relevant info
+      $query = "SELECT * FROM showing WHERE showing_id ='$val'";
+      $result = mysqli_query($connection, $query);
+
+      echo '<div class="row" style="text-align: center";>';
+      if(isset($result)){
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $mid = $row["movie_id"];
+
+        //get movie name
+        $movie_query = "SELECT title FROM movie WHERE movie_id ='$mid'";
+        $movie_title = mysqli_query($connection, $movie_query);
+        $movie_row = mysqli_fetch_row($movie_title);
+
+        //get reservation id
+        $res_query = "SELECT * FROM reservations WHERE showing_id ='".$val."' AND account_number ='".$_SESSION['account number']."'";
+        $res_title = mysqli_query($connection, $res_query);
+        $res_row = mysqli_fetch_row($res_title);
+
+        //get showings by id for date
+        //$sid = $row['showing_id'];
+        $showing_query = "SELECT showing_date, complex_id, start_time, theatre_num FROM showing WHERE showing_id ='$val'";
+        $showing_result= mysqli_query($connection, $showing_query);
+        $showing_row = mysqli_fetch_row($showing_result);
+
+        //get complex name
+        $cid = $showing_row[1];
+        $complex_query = "SELECT name FROM theatre_complex WHERE complex_id ='$cid'";
+        $complex_result= mysqli_query($connection, $complex_query);
+        $complex_row = mysqli_fetch_row($complex_result);
+
+        echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
+
+        $image="movie_images/".$row["movie_id"].".jpg";
+        echo "<img src= '$image'/>";
+        echo "<br>";
+        echo "Movie Title: ".$movie_row[0]."<br>";
+        echo "Date: ".$showing_row[0]."<br>";
+        echo "Start Time: ".$showing_row[2]."<br>";
+        echo "Theatre #: ".$showing_row[3]."<br>";
+        echo "Tickets: ".$res_row[1]."<br>";
 
 
-      //header('location: reservations.php');
+        echo '<div class="span2">
+            <div class="btn-group">
+
+                <form action="deleteResHandler.php"  method = "post">
+                <span class="far fa-frown"></span><input type="submit" name="action" value="Confirm Refund" />
+                </span><input type="hidden" name="action-button" value="'.$res_row[0].'" />
+
+                </form>
 
 
+            </div>
+        </div>';
+        //<li><a href="reservations.php"><span class="fas fa-book"></span> Leave Review</a></li>
+        //<li><a href="edituser.php"><span class="far fa-frown"></span> Refund Tickets</a></li>
+        echo '</div>';
 
-      // $account_number = $_POST['username'];
-      // $password = $_POST['password'];
-      //
-      // $query = "SELECT first_name, last_name, account_number, phone_number, street, city, pc FROM Customer WHERE account_number = '$account_number' AND password = '$password'";
-      // $result = mysqli_query($connection, $query);
-      //
-      // if($result->num_rows == 0){
-      //   die(header("location:login.php?loginFailed=true"));
-      // }else{
-      //   session_start();
-      //   $row = mysqli_fetch_row($result);
-      //   //header('location: home.php?first_name='.$row[0].'&last_name='.$row[1]);
-      //   $_SESSION["first name"] = $row[0];
-      //   $_SESSION["last name"] = $row[1];
-      //   $_SESSION["account number"]= $row[2];
-      //   $_SESSION["loggedIn"] = 'True';
-      //   header('location: home.php');
-        // echo "First Name: " . $row[0] . "<br>";
-        // echo "Last Name: " . $row[1] . "<br>";
-    //  }
+      echo '</div';
+      echo '</div';
+      //echo '</div';
+    }
+      ?>
 
-  ?>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
