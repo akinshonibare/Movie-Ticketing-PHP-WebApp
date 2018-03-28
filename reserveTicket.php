@@ -21,7 +21,7 @@
         die('Query Failed' . mysqli_error());
     }else{
         echo "Seats Reserved";
-        header( "refresh:3;url=profile.php" );
+        header( "refresh:2;url=profile.php" );
     }
 
   }

@@ -12,16 +12,17 @@ include("header.html");
               id="navcol-1">
               <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Showings</a></li>
-                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
-                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
-                  }
-                  ?>
+
                   <?php
                   if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>';
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>';
                   } else {
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Login</a></li>';
+                  }
+                  ?>
+                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
+                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
                   }
                   ?>
 

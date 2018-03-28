@@ -2,7 +2,6 @@
 session_start();
 include "database.php";
 include "header.html";
-include "navbar.html";
 //include "edituser.php";
 global $connection;
 $val = $_POST['action-button'];

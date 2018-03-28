@@ -11,17 +11,17 @@ include 'functions.php';
           <div class="collapse navbar-collapse"
               id="navcol-1">
               <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item" role="presentation"><a class="nav-link" href="home.php">Home</a></li>
-                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
-                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
-                  }
-                  ?>
+
                   <?php
                   if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>';
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>';
                   } else {
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Login</a></li>';
+                  }
+                  ?>
+                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
+                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
                   }
                   ?>
 
@@ -80,6 +80,7 @@ include 'functions.php';
                 $rowCheck = mysqli_query($connection, $showingQuery);
                 if($rowCheck->num_rows === 0){
                   echo '<div class="col-sm-12 text-center"> <h5>No Showing Results :(</h5></div>';
+                  echo "</div>";
                 } else {
                 while ($row = mysqli_fetch_array($showingResult, MYSQLI_ASSOC)) {
                   echo "<div class=\"col-xs-12 col-sm-4 col-md-3 text-center showing-banner\" id=\"".$row["showing_id"]."\">";

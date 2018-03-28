@@ -17,7 +17,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Showings</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="home.php">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -124,7 +124,7 @@
                           </div>
                           </div>
                     <?php
-                      }
+                  }
                     }
                   ?>
               </div>
@@ -139,6 +139,16 @@
       // $("#menu-toggle").click(function(e) {
       //     e.preventDefault();
       //     $("#wrapper").toggleClass("toggled");
+      // });
+      // $( document ).ready(function() {
+      //   var firstLoad = true;
+      //   if(firstLoad){
+      //     $.post( "admin.php", {title:'about'},
+      //     function( data ) {
+      //       firstLoad = false;
+      //       $( "#admin-wrapper-id" ).html( data );
+      //     });
+      //   }
       // });
       function post_nav(nav){
         console.log(nav);

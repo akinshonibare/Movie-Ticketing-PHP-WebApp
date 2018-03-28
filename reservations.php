@@ -12,16 +12,16 @@ include 'functions.php';
               id="navcol-1">
               <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Showings</a></li>
-                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
-                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
-                  }
-                  ?>
                   <?php
                   if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true){
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>';
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Logout</a></li>';
                   } else {
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Login</a></li>';
+                  }
+                  ?>
+                  <?php if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1){
+                    echo '<li class="nav-item" role="presentation"><a class="nav-link" href="admin.php">Admin</a></li>';
                   }
                   ?>
 
@@ -41,7 +41,7 @@ include 'functions.php';
         $query = "SELECT * FROM reservations WHERE account_number=".$_SESSION['account number'];
         $result = mysqli_query($connection, $query);
 
-        echo '<div class="row">';
+        echo '<div class="row" style="margin-bottom:30px;">';
         if(isset($result)){
           $count = 0;
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -63,7 +63,7 @@ include 'functions.php';
           $complex_result= mysqli_query($connection, $complex_query);
           $complex_row = mysqli_fetch_row($complex_result);
 
-          echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
+          echo '<div class="col-xs-12 col-sm-6 col-md-4 text-center">';
 
           $image="movie_images/".$row["movie_id"].".jpg";
           echo "<img src= '$image'/>";
@@ -80,14 +80,14 @@ include 'functions.php';
                       Action
                       <span class="icon-cog icon-white"></span><span class="caret"></span>
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu text-center">
                   <form action="leaveReview.php"  method = "post">
-                  <li> <span class="fas fa-book"></span><input type="submit" name="action" value="Leave Review" />
+                  <li style="margin-bottom:10px;"> <i class="edit-icon fas fa-book"></i><input style="width:124px;" class="btn btn-primary" type="submit" name="action" value="Leave Review" />
                   </span><input type="hidden" name="action-button" value="'.$row['movie_id'].'" /></li>
 
                   </form>
                   <form action="deleteReservation.php"  method = "post">
-                  <li> <span class="far fa-frown"></span><input type="submit" name="action" value="Refund" />
+                  <li> <i class="edit-icon far fa-frown"></i><input style="width:124px;" class="btn btn-danger" type="submit" name="action" value="Refund" />
                   </span><input type="hidden" name="action-button" value="'.$sid.'" /></li>
 
                   </form>

@@ -14,7 +14,6 @@
     }else{
       session_start();
       $row = mysqli_fetch_row($result);
-      //header('location: home.php?first_name='.$row[0].'&last_name='.$row[1]);
       $_SESSION["first name"] = $row[0];
       $_SESSION["last name"] = $row[1];
 
@@ -23,7 +22,7 @@
       $_SESSION["isAdmin"] = $row[7];
 
       $_SESSION["loggedIn"] = 'True';
-      header('location: home.php');
+      header('location: index.php');
       // echo "First Name: " . $row[0] . "<br>";
       // echo "Last Name: " . $row[1] . "<br>";
     }
