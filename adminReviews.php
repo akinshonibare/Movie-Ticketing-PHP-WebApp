@@ -11,8 +11,8 @@
 <?php
 
 $query = "SELECT movie_id, account_number, body FROM Movie_Reviews";
-
 $reviews = mysqli_query($connection,$query);
+
 while($row = mysqli_fetch_assoc($reviews)) {
     $movie_id             = $row['movie_id'];
     $account_number            = $row['account_number'];
