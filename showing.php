@@ -61,7 +61,8 @@ include("header.html");
           <ul class="list-group" style="width:100%;">
             <li class="list-group-item"><b>Title:</b>  '.$row[8].'</li>
             <li class="list-group-item"><b>Date:</b>  '.$row[1].'</li>
-            <li class="list-group-item"><b>Start Time:</b>  '.$row[4].'</li>
+            <li class="list-group-item"><b>Start Time:</b>  <span id="showing-start-time">'.$row[4].'</span></li>
+            <li class="list-group-item"><b>Theatre:</b>  '.$row[5].'</li>
             <li class="list-group-item"><b>Running Time:</b>  '.$row[9].'</li>
             <li class="list-group-item"><b>Rating:</b>  '.$row[10].'</li>
             <li class="list-group-item"><b>Director:</b>  '.$row[12].'</li>
@@ -125,4 +126,13 @@ include("header.html");
       }
       ?>
     </div>
+    <script>
+      $( document ).ready(function() {
+        var startTimeDOM = document.getElementById('showing-start-time');
+        var startTime = startTimeDOM.innerHTML;
+        startTime = startTime.slice(startTime.length-4);
+        startTime = startTime.slice(0,2) + ':' + startTime.slice(2,4);
+        startTimeDOM.innerHTML = startTime;
+      });
+    </script>
   </body>
