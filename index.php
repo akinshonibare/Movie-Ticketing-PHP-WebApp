@@ -85,7 +85,7 @@ include 'functions.php';
                 while ($row = mysqli_fetch_array($showingResult, MYSQLI_ASSOC)) {
                   echo "<div class=\"col-xs-12 col-sm-4 col-md-3 text-center showing-banner\" id=\"".$row["showing_id"]."\">";
                   $image="movie_images/".$row["movie_id"].".jpg";
-                  echo "<img src= '$image'/>";
+                  echo "<img class='movie_image' src= '$image'/>";
                   echo "<br>";
                   echo "Movie Title: ".$row["title"]."<br>";
                   echo "Theatre: ".$row["theatre_num"].", Seats Available: ".$row["seats_available"]." <br>";
@@ -119,7 +119,7 @@ include 'functions.php';
               while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
                 $image="movie_images/".$row["movie_id"].".jpg";
-                echo "<img src= '$image'/>";
+                echo "<img class='movie_image' src= '$image'/>";
                 echo "<br>";
                 echo "Movie Title: ".$row["title"]."<br>";
                 echo "Running Time: ".$row["running_time"]."<br>";

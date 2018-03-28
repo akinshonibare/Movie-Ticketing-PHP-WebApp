@@ -37,6 +37,10 @@ width: 100%;
 .showing-banner:hover{
   background-color: #dcc5af;
 }
+.movie_image{
+  width:227px;
+  height: 336px;
+}
 /* Theatre Complex*/
 .complex-row{
   text-align: center;
