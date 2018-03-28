@@ -7,6 +7,7 @@ include "updateCustomer.php";
 include 'functions.php';
 isLoggedIn();
 include("header.html");
+$account_num = $_POST['action-button'];
  ?>
 
 <body>
@@ -35,7 +36,7 @@ include("header.html");
   </nav>
     <section id="cover" style="margin-top:56px;">
         <?php
-        $userQuery = "SELECT * FROM Customer WHERE account_number=".$_SESSION["account number"];
+        $userQuery = "SELECT * FROM Customer WHERE account_number=".$account_num;
         $userResult = mysqli_query($connection, $userQuery);
         $row = mysqli_fetch_row($userResult);
         //$_SESSION["account_number"] = $row[0];
@@ -45,14 +46,14 @@ include("header.html");
 			<div class="row">
 				<div class="main-login main-center" style="width:100%;margin-bottom:40px;">
 
-					<form method="post" action="updateCustomer.php" class="text-center">
+					<form method="post" action="updateCustomerAdmin.php" class="text-center">
 
 						<div class="form-group col-sm-12 col-md-6 offset-md-3">
 							<label class="control-label">First Name</label>
 							<div class="">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="edit-icon fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="first_name"  value="<?php echo ''.$row[2].''; ?> " disabled="true">
+									<input type="text" class="form-control" name="first_name"  value="<?php echo ''.$row[2].''; ?> ">
 								</div>
 							</div>
 						</div>
@@ -62,7 +63,7 @@ include("header.html");
 
 								<div class="input-group">
 									<span class="input-group-addon"><i class="edit-icon fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="last_name" id="last_name"  value="<?php echo ''.$row[3].''; ?>" disabled="true">
+									<input type="text" class="form-control" name="last_name" id="last_name"  value="<?php echo ''.$row[3].''; ?>">
 								</div>
 
 						</div>
@@ -130,6 +131,8 @@ include("header.html");
 
 						<div class="form-group col-sm-12">
               <input class ="btn btn-success" type="submit" name="submit" value="Submit Changes" style="">
+              <input type="hidden" class="form-control" name="account_num" id="account_num"  value="<?php echo ''.$account_num.''; ?>">
+              <!--<input type="hidden" name="account_num" value="'.$account_num.'" />-->
 							<!--<a href="" target="_blank" type="button" name="submit" id="submit" class="btn btn-primary btn-lg btn-block login-button">Submit Changes</a>-->
 						</div>
 
