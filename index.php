@@ -117,7 +117,7 @@ include 'functions.php';
               $query = "SELECT * FROM Movie";
               $result = mysqli_query($connection, $query);
               while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center">';
+                echo "<div class=\"col-xs-12 col-sm-4 col-md-3 text-center movie-banner\" id=\"".$row["movie_id"]."\">";
                 $image="movie_images/".$row["movie_id"].".jpg";
                 echo "<img class='movie_image' src= '$image'/>";
                 echo "<br>";
@@ -125,6 +125,7 @@ include 'functions.php';
                 echo "Running Time: ".$row["running_time"]."<br>";
                 echo "Rating: ".$row["rating"]."<br>";
                 echo "ID: ".$row["movie_id"]."<br>";
+                echo "<div class=\"movie-banner-id\" style = \"visibility: hidden\">".$row["movie_id"]."</div>";
                 echo "</div>";
               }
             echo '</div';
@@ -139,6 +140,8 @@ include 'functions.php';
     <script>
 
     var showingIDS = document.getElementsByClassName('showing-banner');
+    var movieIDS = document.getElementsByClassName('movie-banner');
+
     if(showingIDS){
       console.log("showing IDS", showingIDS);
       for(var i = 0; i < showingIDS.length; i++){
@@ -149,9 +152,24 @@ include 'functions.php';
       }
     }
 
+    if(movieIDS){
+      for(var i = 0; i < movieIDS.length; i++){
+        movieIDS[i].addEventListener("click", function(){
+          console.log(this.id + " clicked");
+          handleMovieClick(this.id);
+        });
+      }
+    }
+
     function handleShowingClick(showingID){
       if (showingID) {
         window.location = 'showing.php?showingID='+showingID;
+      }
+    }
+
+    function handleMovieClick(movieID){
+      if (movieID) {
+        window.location = 'movie.php?movieID='+movieID;
       }
     }
     </script>

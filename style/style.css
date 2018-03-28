@@ -37,6 +37,13 @@ width: 100%;
 .showing-banner:hover{
   background-color: #dcc5af;
 }
+.movie-banner{
+  padding-top: 20px;
+  cursor: pointer;
+}
+.movie-banner:hover{
+  background-color: black;
+}
 .movie_image{
   width:227px;
   height: 336px;
