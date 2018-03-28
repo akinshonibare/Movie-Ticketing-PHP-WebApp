@@ -7,6 +7,7 @@
   deleteMovie();
   deleteMovie2();
   deleteUser2();
+  deleteReview();
 ?>
 
 <?php include "header.html";?>
@@ -51,6 +52,9 @@
                   <li>
                       <a href="#" onclick="post_nav('complexes');">Complexes</a>
                   </li>
+                  <li>
+                      <a href="#" onclick="post_nav('reviews');">Reviews</a>
+                  </li>
               </ul>
             </form>
           </div>
@@ -69,6 +73,8 @@
                         include 'adminUser.php';
                       }elseif ($option == "about") {
                         include 'adminAbout.php';
+                      }elseif ($option == "reviews") {
+                        include 'adminReviews.php';
                       }elseif ($option == "complexes") {
                         include 'adminComplexes.php';
                         ?>
