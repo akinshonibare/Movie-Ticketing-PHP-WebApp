@@ -53,7 +53,7 @@ include("header.html");
           echo '<div class="row movie-showing-main">';
           echo '<div class="col-sm-12 col-md-4 text-center" style="margin-bottom:20px;">';
           echo '<h2 style="visibility:hidden">XYZ</h2>';
-          echo "<img src= '$image'/>";
+          echo "<img class='movie_image' src= '$image'/>";
           echo "</div>";
           echo '<div class="col-sm-12 col-md-4" style="margin-bottom:20px;">';
           echo '
