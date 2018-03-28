@@ -274,6 +274,26 @@ function addMovie(){
 
     }
 
+    function deleteReview(){
+       if(isset($_GET['deleteReview'])) {
+           global $connection;
+           $movie_id      = $_GET['deleteReview'];
+           $account_number      = $_GET['account_number'];
+
+           $query = "DELETE FROM Movie_Reviews ";
+           $query .= "WHERE movie_id = '$movie_id' AND account_number = '$account_number'";
+
+           $result = mysqli_query($connection, $query);
+           header('location: admin.php');
+           // if(!$result){
+           //     die("query failed" . mysqli_error($connection));
+           // }else{
+           //     echo "record deleted";
+           // }
+       }
+
+   }
+
     function deleteMovie2(){
        if(isset($_GET['deleteMovie'])) {
            global $connection;
