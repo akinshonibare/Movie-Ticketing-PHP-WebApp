@@ -79,7 +79,7 @@ echo $val;
         echo '<div style=" margin: 0 auto;">';
 
         $image="movie_images/".$val.".jpg";
-        echo "<img src= '$image'/>";
+        echo "<img class='movie_image' src= '$image'/>";
         echo "<br>";
         echo "<b>Movie Title:</b> ".$movie_row[1]."<br>";
         $reviewID =1;

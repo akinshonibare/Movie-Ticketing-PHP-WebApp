@@ -16,7 +16,7 @@
     }
 
     $image="movie_images/".$movie_id.".jpg";
-    echo "<img src= '$image'/>";
+    echo "<img class='movie_image' src= '$image'/>";
     echo "<br>";
 
     echo "movie ID: $movie_id";

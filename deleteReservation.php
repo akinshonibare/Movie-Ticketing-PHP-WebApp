@@ -78,7 +78,7 @@ echo $val;
         echo '<div class="col-xs-12 col-sm-4 col-md-3 text-center" style="text-align: center; margin: 0 auto;">';
 
         $image="movie_images/".$row["movie_id"].".jpg";
-        echo "<img src= '$image'/>";
+        echo "<img class='movie_image' src= '$image'/>";
         echo "<br>";
         echo "Movie Title: ".$movie_row[0]."<br>";
         echo "Date: ".$showing_row[0]."<br>";

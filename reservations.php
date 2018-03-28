@@ -66,7 +66,7 @@ include 'functions.php';
           echo '<div class="col-xs-12 col-sm-6 col-md-4 text-center">';
 
           $image="movie_images/".$row["movie_id"].".jpg";
-          echo "<img src= '$image'/>";
+          echo "<img class='movie_image' src= '$image'/>";
           echo "<br>";
           echo "Movie Title: ".$movie_row[0]."<br>";
           echo "Date: ".$showing_row[0]."<br>";
