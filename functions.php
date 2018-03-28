@@ -118,7 +118,6 @@ function addMovie(){
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
 
-
             $query = "INSERT INTO Movie(movie_id, title, running_time, rating, plot_synopsis, director, production_company, name_of_supplier, start_date, end_date) ";
             $query .= "VALUES('$movie_id','$title','$running_time','$rating','$plot_synopsis', '$director', '$production_company', '$name_of_supplier', '$start_date', '$end_date')";
             $result = mysqli_query($connection, $query);
@@ -171,6 +170,7 @@ function addMovie(){
                     }else{
                         echo "record created";
                     }
+                    header('admin.php');
                 }
             }
 
@@ -184,8 +184,6 @@ function addMovie(){
                         $start_time = $_POST['start_time'];
                         $theatre_num = $_POST['theatre_num'];
                         $seats_available = $_POST['seats_available'];
-
-
 
                         $query = "INSERT INTO Showing(showing_id, showing_date, movie_id, complex_id, start_time, theatre_num, seats_available) ";
                         $query .= "VALUES('$showing_id','$showing_date','$movie_id','$complex_id', '$start_time', '$theatre_num', '$seats_available')";
