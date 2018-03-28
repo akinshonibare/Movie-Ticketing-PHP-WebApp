@@ -43,6 +43,10 @@ while($row = mysqli_fetch_assoc($select_users)) {
     // echo "<td><a href='deleteuser.php'>Delete</a></td>";
     echo "<td><a href='admin.php?delete={$accountNumber}'>Delete</a></td>";
 
+    echo '<td><form action="editUserAdmin.php"  method = "post">
+    <input class="btn btn-link" type="submit" name="action" value="Edit" />
+    <input type="hidden" name="action-button" value="'.$accountNumber.'" /></li>
+    </form></td>';
 
 
     // echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";

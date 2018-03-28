@@ -6,8 +6,10 @@ include "database.php";
 global $connection;
 
     if(isset($_POST['submit'])) {
+      $first_name= $_POST['first_name'];
+      $last_name= $_POST['last_name'];
       $cityName = $_POST['city'];
-      $acc_no = $_SESSION["account number"];
+      $acc_no = $_POST['account_num'];
       $street_name = $_POST['street'];
       $current_password = $_POST['current_password'];
       $new_password = $_POST['new_password'];
@@ -25,9 +27,9 @@ global $connection;
       }
 
 
-      mysqli_query($connection, "UPDATE customer SET password = '$pw', street = '$street_name', city = '$cityName', pc = '$postalcode'  WHERE account_number = '$acc_no'");
-      //$result = mysqli_query($connection, $query);
-      header('location: editUser.php');
+      mysqli_query($connection, "UPDATE customer SET first_name = '$first_name', last_name = '$last_name', password = '$pw', street = '$street_name', city = '$cityName', pc = '$postalcode'  WHERE account_number = '$acc_no'");
+      $result = mysqli_query($connection, $query);
+      header('location: admin.php');
 
 
       }
