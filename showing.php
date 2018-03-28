@@ -42,17 +42,22 @@ include("header.html");
           $showing_id = $_GET['showingID'];
           $showingQuery = "SELECT * FROM Showing INNER JOIN Movie ON Showing.movie_id = Movie.movie_id WHERE showing_id = '$showing_id'";
           $showingResult = mysqli_query($connection, $showingQuery);
-          if($showingResult->num_rows ==0){
+
+          if($showingResult->num_rows == 0){
             echo '<div><h3> No Results </h3></div>';
           } else{
           $row = mysqli_fetch_row($showingResult);
+          $reviewQuery = "SELECT * FROM Movie_Reviews WHERE movie_id ='$row[2]'";
+          $reviewResult = mysqli_query($connection, $reviewQuery);
           $image="movie_images/".$row[2].".jpg";
           echo '<div class="row movie-showing-main">';
           echo '<div class="col-sm-12 col-md-4 text-center" style="margin-bottom:20px;">';
+          echo '<h2 style="visibility:hidden">XYZ</h2>';
           echo "<img src= '$image'/>";
           echo "</div>";
-          echo '<div class="col-sm-12 col-md-8" style="margin-bottom:20px;">';
+          echo '<div class="col-sm-12 col-md-4" style="margin-bottom:20px;">';
           echo '
+          <h2> Movie Info </h2>
           <ul class="list-group" style="width:100%;">
             <li class="list-group-item"><b>Title:</b>  '.$row[8].'</li>
             <li class="list-group-item"><b>Date:</b>  '.$row[1].'</li>
@@ -64,6 +69,21 @@ include("header.html");
           </ul>
           ';
           echo "</div>";
+          //Review Column
+          echo '<div class="col-sm-12 col-md-4" style="margin-bottom:20px;">';
+          echo '<h2> Reviews </h2>';
+          if($reviewResult->num_rows == 0){
+            echo '<div><h4> No Reviews Found </h4></div>';
+          } else{
+            echo' <ul class="list-group" style="width:100%;">';
+            while($reviewRow = mysqli_fetch_array($reviewResult, MYSQLI_ASSOC)) {
+              echo '<li class="list-group-item"><b>Score ('.$reviewRow["rating"].'/10): </b>'.$reviewRow["body"].'</li>';
+            }
+            echo'</ul>';
+          }
+
+          echo '</div>';
+
           echo "</div>";
           echo '<div class="row movie-showing-reserve">';
           //Reserve Button
