@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'functions.php';
-isLoggedIn();
 include("header.html");
 
 ?>
